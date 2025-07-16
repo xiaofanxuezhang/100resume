@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百分投简历</title>
+    <style>
+/* 更新根变量，使用更现代的配色方案 */
+:root {
+    --primary-color: #4a6bff; /* 更现代的蓝色 */
+    --secondary-color: #2d3748; /* 更柔和的深色 */
+    --background-color: #f8fafc; /* 更柔和的背景色 */
+    --text-color: #333;
+    --border-radius: 10px; /* 增加圆角 */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 统一的阴影效果 */
+    --transition: all 0.3s ease; /* 统一的过渡效果 */
+    --success-color: #38a169; /* 成功色 */
+    --warning-color: #e53e3e; /* 警告色 */
+    --card-bg: #ffffff; /* 卡片背景色 */
+}
+
+/* 优化整体布局 */
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 优化中文字体 */
+    line-height: 1.7; /* 增加行高 */
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 美化容器 */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    box-shadow: var(--box-shadow);
+    background-color: var(--card-bg);
+    overflow-y: auto;
+    overflow-x: auto;
+    border-radius: var(--border-radius);
+}
+
+/* 优化侧边栏 */
+.sidebar {
+    width: 180px; /* 增加宽度 */
+    min-width: 180px;
+    background-color: var(--secondary-color);
+    padding: 25px 0;
+    flex-shrink: 0;
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    border: none;
+    background-color: transparent;
+    color: #ecf0f1;
+    text-align: left;
+    font-size: 16px;
+    transition: var(--transition);
+    cursor: pointer;
+    margin-bottom: 5px; /* 增加按钮间距 */
+    border-left: 4px solid transparent; /* 为激活状态准备 */
+}
+
+.sidebar button:hover, .sidebar button.active {
+    background-color: rgba(255, 255, 255, 0.1); /* 半透明悬停效果 */
+    color: #fff;
+    border-left: 4px solid var(--primary-color); /* 左侧边框指示激活状态 */
+}
+
+/* 美化内容区域 */
+.content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: var(--card-bg);
+}
+
+/* 标题样式优化 */
+h1, h2 {
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 32px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+}
+
+h2 {
+    font-size: 26px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+
+        #Guide h2, #About h2 {
+            font-size: 28px;
+        }
+
+        #Guide p, #Guide li, #About p {
+            font-size: 18px;
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group-inline {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus, textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+    outline: none;
+}
+
+/* 美化按钮 */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--transition);
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #3a5ae8; /* 稍深的蓝色 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* 美化表格 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 25px;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+tbody {
+    display: block;
+    max-height: 700px;
+    overflow-y: auto;
+}
+
+        /* 固定表头 */
+        thead, tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed; /* 保证表格单元格宽度一致 */
+        }
+        
+        /* 设置"职位福利"列的宽度 */
+th.job-benefits-column, td.job-benefits-column {
+    width: 200px; /* 根据需要调整宽度 */
+    white-space: nowrap; /* 防止自动换行 */
+    overflow: hidden; /* 超出部分隐藏 */
+    text-overflow: ellipsis; /* 显示省略号 */
+}
+
+/* 其他列可以根据需要设置宽度 */
+th.job-title-column, td.job-title-column {
+    width: 150px;
+}
+
+/* 为避免表格过宽，可以为表格设置最大宽度，或者为其他列设置适当的宽度 */
+
+
+
+        tbody tr {
+            display: table;
+            width: 100%;
+        }
+
+
+        /* 美化表格行和单元格 */
+th, td {
+    text-align: left;
+    padding: 14px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tr:hover {
+    background-color: #edf2f7;
+    transition: var(--transition);
+}
+/* 选中行样式优化 */
+tr.selected {
+    background-color: rgba(74, 107, 255, 0.1);
+    border-left: 3px solid var(--primary-color);
+}
+
+        /* 美化开关按钮 */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e0;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
+        .tabcontent {
+            display: none;
+            animation: fadeEffect 0.5s;
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .divider {
+            width: 1px;
+            background-color: #ddd;
+            margin: 0 10px;
+        }
+
+        
+        /* 美化弹窗 */
+.overlay {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    backdrop-filter: blur(3px); /* 添加模糊效果 */
+    transition: var(--transition);
+}
+
+.popup {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 80%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 1000;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    color: #e53e3e;
+    transform: rotate(90deg);
+}
+        /* 美化卡片 */
+.card {
+    border: none;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    padding: 25px;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    position: relative;
+    padding-top: 40px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+/* 美化进度条 */
+.progress-bar {
+    width: 100%;
+    background-color: #e2e8f0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4a6bff, #38b2ac);
+    border-radius: 6px;
+    transition: width 0.8s ease;
+}
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .button {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+/* 美化简历摘要文本框 */
+#resumeSummary {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+    color: #333;
+    border-radius: var(--border-radius);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    resize: none;
+    outline: none;
+    overflow-y: auto;
+    transition: var(--transition);
+}
+
+#resumeSummary:focus {
+    border-color: var(--primary-color);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05), 0 0 0 3px rgba(74, 107, 255, 0.2);
+}
+
+        .score-container {
+    display: flex; /* 使用flexbox布局 */
+    justify-content: space-between; /* 左右对齐，h3在左，p在右 */
+    align-items: center; /* 垂直居中对齐 */
+    margin-bottom: 10px; /* 为分数容器和进度条之间添加间距 */
+}
+
+h3 {
+    margin: 0; /* 去掉默认的外边距 */
+}
+
+/* 美化分数显示 */
+#scoreText {
+    margin: 0;
+    text-align: right;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--primary-color);
+    animation: fadeIn 1s ease-in-out, pulse 2s infinite;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 心跳效果动画 */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.card {
+    position: relative; /* 设置相对定位作为子元素的参考 */
+    padding-top: 40px; /* 为按钮留出空间 */
+}
+
+.apply-button-container {
+    position: absolute; /* 绝对定位 */
+    top: 10px; /* 从顶部10px的位置开始 */
+    right: 10px; /* 从右侧10px的位置开始 */
+}
+
+/* 美化应用按钮 */
+.apply-button {
+    padding: 12px 24px;
+    background: linear-gradient(90deg, var(--primary-color), #3a5ae8);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(74, 107, 255, 0.3);
+    transition: var(--transition);
+}
+
+.apply-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(74, 107, 255, 0.4);
+}
+#devButtons .button {
+    background-color: grey;  /* 设置按钮的背景颜色为灰色 */
+    color: white;            /* 设置按钮文字颜色为白色，确保可读性 */
+    border: none;            /* 去除边框 */
+    opacity: 0.5;            /* 添加透明度以表示按钮不可用/开发中 */
+    cursor: not-allowed;     /* 更改鼠标光标为不允许的符号 */
+}
+
+/* 美化关于页面 */
+#About {
+    font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+    background-color: white;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-top: 20px;
+}
+
+#About h2 {
+    color: #333;
+    margin-bottom: 16px;
+}
+
+#About p {
+    color: #666;
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#About img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #fff;
+}
+
+#version-number {
+    font-size: 18px;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+#changelog {
+    font-size: 15px;
+    color: #4a5568;
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+}
+
+#changelog h3 {
+    font-size: 18px;
+    color: var(--secondary-color);
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+#changelog ul {
+    padding-left: 20px; /* 维持原样 */
+}
+
+#changelog li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.feedback, .sponsor {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-top: 25px;
+    text-align: center;
+}
+
+.feedback p, .sponsor p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.feedback img, .sponsor img {
+    display: block;
+    margin: 10px auto;
+    max-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.feedback img:hover, .sponsor img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/*是否生成打招呼语样式*/
+.apply-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px 0;
+}
+
+.greeting-option {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.greeting-option input[type="checkbox"] {
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.greeting-option label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 选中行的背景颜色 */
+tr.selected {
+    background-color: #d0ebff; /* 浅蓝色背景 */
+}
+/* 可排序的表头样式 */
+.sortable-header {
+    cursor: pointer; /* 鼠标指针变为手型，提示可点击 */
+    user-select: none; /* 防止用户选择文本 */
+    position: relative; /* 相对定位，以便放置排序指示器 */
+}
+
+/* 美化表格排序指示器 */
+.sort-indicator {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    vertical-align: middle;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    transition: var(--transition);
+}
+
+.sortable-header {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    transition: var(--transition);
+}
+
+.sortable-header:hover {
+    background-color: #3a5ae8;
+}
+
+.sortable-header.sort-asc .sort-indicator {
+    border-bottom: 5px solid white;
+}
+
+.sortable-header.sort-desc .sort-indicator {
+    border-top: 5px solid white;
+}
+
+
+/* 默认状态，无排序 */
+.sortable-header:not(.sort-asc):not(.sort-desc) .sort-indicator {
+    border-top: 5px solid #ccc; /* 默认灰色箭头 */
+}
+.updated-row {
+    background-color: #e6ffe6; /* 绿色高亮 */
+}
+
+/* 美化批量打招呼按钮 */
+#greetSelectedJobs {
+    background: linear-gradient(90deg, #e53e3e, #c53030);
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 8px rgba(229, 62, 62, 0.3);
+}
+
+#greetSelectedJobs:hover {
+    background: linear-gradient(90deg, #c53030, #9b2c2c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(229, 62, 62, 0.4);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* 美化下拉菜单 */
+.dropdown-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--transition);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.dropdown-btn:after {
+    content: '▼';
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-content button {
+    width: 100%;
+    padding: 12px 16px;
+    text-align: left;
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    display: block;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.dropdown-content button:hover {
+    background-color: #f8fafc;
+    color: var(--primary-color);
+    transform: none;
+    box-shadow: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-btn {
+    background-color: #2980b9;
+}
+
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .popup {
+        width: 95%;
+        padding: 20px;
+    }
+}
+
+/* 运行模式选择的样式 */
+.form-mode-selection {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.mode-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    flex: 1;
+    justify-content: center;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.mode-option:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: linear-gradient(to bottom, rgba(74, 107, 255, 0.1), transparent);
+    transition: height 0.3s ease;
+}
+
+.mode-option:hover:before {
+    height: 100%;
+}
+
+.mode-option:hover {
+    border-color: #a0aec0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.mode-option input[type="radio"] {
+    margin-right: 8px;
+}
+
+.mode-option input[type="radio"]:checked + span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.mode-option:has(input[type="radio"]:checked) {
+    border-color: var(--primary-color);
+    background-color: rgba(74, 107, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(74, 107, 255, 0.1);
+}
+
+/* API设置区域的样式 - 更新 */
+#apiSettings {
+    background-color: rgba(74, 107, 255, 0.03);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--primary-color);
+    margin: 15px 0;
+}
+
+.api-settings-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.model-select {
+    flex: 0 0 20%; /* 固定占五分之一宽度 */
+}
+
+.api-url-input {
+    flex: 0 0 80%; /* 固定占五分之四宽度 */
+}
+
+.api-key-input {
+    flex: 0 0 80%; /* 固定占五分之四宽度 */
+}
+
+.ollama-checkbox {
+    display: flex;
+    align-items: center;
+    flex: 0 0 20%; /* 固定占五分之一宽度 */
+}
+
+.ollama-checkbox label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    white-space: nowrap; /* 防止文字换行 */
+}
+
+.ollama-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    transform: scale(1.2);
+}
+
+/* 自动保存通知样式 */
+.save-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none; /* 确保通知不会拦截点击事件 */
+}
+
+.save-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 自动保存提示样式 */
+.autosave-hint {
+    margin-top: 20px;
+    padding: 12px 16px;
+    background-color: #f8fafc;
+    border-left: 3px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.autosave-hint p {
+    margin: 0;
+}
+
+    </style>
+</head>
+<body>
+    
+    
+    <div class="container">
+        <!-- 添加官网链接 -->
+        <a href="https://100resume.aitoolhub.top/" target="_blank" id="official-website" style="position: absolute; top: 15px; right: 20px; background-color: var(--primary-color); color: white; padding: 8px 15px; border-radius: var(--border-radius); text-decoration: none; font-weight: bold; box-shadow: var(--box-shadow);">
+            🏠 官网
+        </a>
+        <div class="sidebar">
+            <button class="tablinks" data-tab="ResumeAnalysis">简历匹配</button>
+            <button class="tablinks" data-tab="HiddenJobs">隐藏岗位</button> <!-- 新增隐藏岗位按钮 -->            
+            <button class="tablinks" data-tab="DataExport">数据导出</button>            
+            <button class="tablinks" data-tab="Guide">使用指南</button>
+            <button class="tablinks" data-tab="Settings">设置</button>
+            <button class="tablinks" data-tab="About">关于</button>
+        </div>
+
+        <div class="content">
+
+            <div id="ResumeAnalysis" class="tabcontent">
+                <!-- 添加声明横幅 -->
+                <div id="announcement-banner" style="background-color: #ffeb3b; color: #333; padding: 12px 20px; text-align: center; font-weight: bold; position: relative; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px;">
+                    <span>⚠️ 重要声明：本软件完全免费使用，未以任何形式售卖，如您在任何地方付费购买，请立即退款并举报</span>
+                    <button id="close-banner-btn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 18px; padding: 0; margin: 0; box-shadow: none; color: #666;">×</button>
+                </div>
+
+                <h2>简历分析</h2>
+                <!-- <button id="deleteSelected" title="删除岗位后数据可能会被再次爬取">删除选中岗位</button> -->
+                <button id="hideSelectedResumes"  title="可以将已投递或不准备投递岗位隐藏，以免岗位重复爬取">隐藏选中岗位</button> <!-- 新增按钮 -->
+                <div class="dropdown">
+                    <button class="dropdown-btn" title="快速隐藏特定状态的岗位">快捷隐藏</button>
+                    <div class="dropdown-content">
+                        <button id="hideClosedJobs" title="隐藏所有已关闭的职位">隐藏已关闭职位</button>
+                        <button id="hideCommunicatedJobs" title="隐藏所有已沟通过的职位">隐藏已沟通过职位</button>
+                    </div>
+                </div>
+                <button id="getJD"  title="获取岗位的要求、薪资、boss活跃时间等信息" class="btn btn-primary">
+                    获取岗位介绍
+                    <i id="loadingIcon" class="fas fa-spinner fa-spin" style="display: none;"></i>
+                </button>  
+                <button class="btn btn-primary" id="processDataButton">开始评分</button>
+                <button id="greetSelectedJobs" class="btn btn-primary">批量打招呼</button> 
+                <!-- <button id="scrapeConversationButton" class="btn btn-primary">追踪投递进度</button> -->
+                <div id="processResult"></div>
+
+                <table id="job-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all"></th>
+                            <th>职位名称</th>
+                            <th>工作地点</th>
+                            <th>薪资</th>
+                            <th>公司名称</th>
+                            <th>工作经验</th>
+                            <th>学历要求</th>
+                            <th class="job-benefits-column">职位福利</th>
+                            <th id="sortActiveTime" class="sortable-header">活跃时间<span class="sort-indicator"></span></th>
+                            <th id="sortFetchTime" class="sortable-header">抓取时间<span class="sort-indicator"></span></th>
+                            <th id="sortHasCommunicated" class="sortable-header">投递进度<span class="sort-indicator"></span></th>
+                            <th id="sortScore" class="sortable-header">匹配分<span class="sort-indicator"></span></th>
+                            <th> 详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 数据将通过JavaScript动态加载 -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="HiddenJobs" class="tabcontent">
+                <h2>隐藏岗位</h2>
+                <button id="deleteSelected" title="删除岗位后数据可能会被再次爬取">删除选中岗位</button>
+                <button id="restoreSelectedJobs">恢复选中岗位</button> <!-- 恢复被隐藏的岗位 -->
+                <table id="hidden-job-table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all-hidden"></th>
+                            <th>职位名称</th>
+                            <th>工作地点</th>
+                            <th>薪资</th>
+                            <th>公司名称</th>
+                            <th>工作经验</th>
+                            <th>学历要求</th>
+                            <th class="job-benefits-column">职位福利</th>
+                            <th>活跃时间</th>
+                            <th>抓取时间</th>
+                            <th>投递进度</th>
+                            <th>匹配分</th>
+                            <th>详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- 隐藏的岗位数据将通过JavaScript动态加载 -->
+                    </tbody>
+                </table>
+            </div>            
+
+            <div id="Settings" class="tabcontent">
+                <h2>设置</h2>
+                <form id="settingsForm">
+                    <!-- 运行模式单独一行 -->
+                    <div class="form-group">
+                        <label for="runMode">运行模式：</label>
+                        <div class="form-mode-selection">
+                            <label class="mode-option">
+                                <input type="radio" id="runModeOnline" name="runMode" value="online" checked>
+                                <span>在线模式</span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" id="runModeLocal" name="runMode" value="local">
+                                <span>本地模式</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- API相关设置，仅在本地模式下显示 -->
+                    <div id="apiSettings">
+                        <div class="api-settings-row">
+                            <div class="form-group model-select">
+                                <label for="model">模型名称：</label>
+                                <input type="text" id="model" name="model" placeholder="例如: glm-4-flash">
+                            </div>
+                            
+                            <div class="form-group api-url-input">
+                                <label for="apiUrl">API 地址：</label>
+                                <input type="text" id="apiUrl" name="apiUrl" placeholder="例如: https://open.bigmodel.cn/api/paas/v4/chat/completions">
+                            </div>
+                        </div>
+                        
+                        <div class="api-settings-row">
+
+                            <div class="form-group api-key-input">
+                                <label for="apiKey">API Key：</label>
+                                <div class="form-group-inline">
+                                    <input type="text" id="apiKey" name="apiKey" style="flex-grow: 1;">
+                                    <a href="https://www.bigmodel.cn/invite?icode=Vfxtix1QYPBhnqXDAieh85mwcr074zMJTpgMb8zZZvg%3D" target="_blank">免费申请 API Key</a>
+                                </div>
+                                <div class="model-vendors-info" style="margin-top: 8px; font-size: 13px; color: #666;">
+                                    <strong>目前支持的模型厂商：</strong>OpenAI(GPT系列)、Anthropic（claude系列）、DeepSeek(DeepSeek系列)、智谱AI(GLM系列)、阿里云(通义千问)、Google(Gemini系列)
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <!-- 打招呼语单独一行 -->
+                    <div class="form-group">
+                        <label for="greetingMessage">打招呼语：</label>
+                        <textarea id="greetingMessage" name="greetingMessage" rows="3" required>我对该岗位非常感兴趣，请问能否进一步沟通？</textarea>
+                    </div>
+
+                    <!-- 额外评分条件 -->
+                    <div class="form-group">
+                        <label for="additionalRequirements">额外评分条件：</label>
+                        <input type="text" id="additionalRequirements" name="additionalRequirements" placeholder="例如：基础薪资低于10000则把所有的维度评为0分" class="form-control">
+                        <small class="form-text text-muted">可以设置多个条件，用分号隔开。例如：薪资要求；工作大小周等等，吸引写明是加分项还是减分，以及程度</small>
+                    </div>
+
+                    <!-- 简历单独一行 -->
+                    <div class="form-group">
+                        <label for="resume">简历(可写入目标岗位、期望薪资等信息)：</label>
+                        <textarea id="resume" name="resume" rows="20"></textarea>
+                    </div>
+
+                </form>
+            </div>
+
+            <div id="DataExport" class="tabcontent">
+                <h2>数据导出</h2>
+                <button id="importConfig">从文件导入配置</button>
+                <button id="exportConfig">导出配置到文件</button>
+                <button id="resetSettings">重置设置</button>
+                <button id="exportJobData">导出岗位数据为xlsx文件</button> <!-- 新增按钮 -->
+            </div>
+
+            <div id="Guide" class="tabcontent">
+                <!-- 使用指南 -->
+                <h2>使用指南</h2>
+                <ol>
+                    <li>
+                        <strong>在线运行与本地运行的区别：</strong><br>
+                        主要区别在于是否使用自己的API。在线运行在作者的API额度没有用完前是免费的。
+                    </li>
+                    <li>
+                        <strong>如果没有自己的key：</strong><br>
+                        可以在设置界面免费申请智谱的key，使用GLM-4-Flash模型是免费的。
+                    </li>
+                    <li>
+                        <strong>关于数据获取：</strong><br>
+                        先完成条件筛选，再进行数据爬取和AI匹配评分，这样可以节约时间和token。
+                    </li>
+                    <li>
+                        <strong>支持的网站：</strong><br>
+                        当前仅支持BOSS直聘，其他招聘网站暂不支持。
+                    </li>
+                    <li>
+                        <strong>关于收费：</strong><br>
+                        本软件完全免费使用，未以任何形式售卖，如您在任何地方付费购买，请立即退款并举报。如软件对您有帮助，欢迎对作者进行赞助！
+                    </li>
+                </ol>
+                <div style="display: flex; justify-content: space-around; gap: 20px; margin: 20px 0;">
+                    <div class="feedback" style="flex: 1; text-align: center;">
+                        <p style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">问题反馈/联系作者</p>
+                        <img src="image/wx.jpg" alt="联系作者" style="width: 300px; height: 300px; object-fit: contain;">
+                    </div>                
+                    <div class="sponsor" style="flex: 1; text-align: center;">
+                        <p style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">赞助作者</p>
+                        <img src="image/zsm.jpg" alt="赞助二维码" style="width: 300px; height: 300px; object-fit: contain;">
+                    </div>
+                </div>
+            </div>                      
+
+            <div id="About" class="tabcontent">
+                <h2>关于</h2>
+                <div id="version-number">版本号：</div>
+                
+                <div id="changelog">
+                    <h3>更新日志</h3>
+                    <ul id="changelog-list">
+                        <!-- 更新日志将通过 JavaScript 动态插入 -->
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div id="overlay" class="overlay" style="display: none;">
+        <div class="popup">
+            <span id="closePopupButton" class="close-btn">&times;</span>
+            <!-- 简历评估结果卡片 -->
+            <div class="card">
+                <div class="card-header">简历评估结果</div>
+                <div class="score-container">
+                    <h3>匹配得分</h3>
+                    <p id="scoreText">0/100</p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>              
+                <div>
+                    <h3>AI 分析</h3>
+                    <p id="aiAnalysis">N/A</p>
+                </div>
+                <div id="devButtons" style="display: flex; justify-content: space-between;">
+                    <button class="button">分享</button>
+                    <div>
+                        <button class="button">👍</button>
+                        <button class="button">👎</button>
+                    </div>
+                </div>
+                
+            </div>
+    
+            <!-- 职位详情卡片 -->
+            <div class="card">
+                <div class="card-header">职位详情</div>
+                <div class="apply-button-container">
+                    <a href="#" class="apply-button" target="_blank">前往投递</a>
+                </div>
+                
+                <div class="grid">
+                    <div>
+                        <h3>岗位名称</h3>
+                        <p id="jobTitle">N/A</p>
+                    </div>
+                    <div>
+                        <h3>公司名称</h3>
+                        <p id="companyName">N/A</p>
+                    </div>
+                    <div>
+                        <h3>薪资待遇</h3>
+                        <p id="salary">N/A</p>
+                    </div>
+                    <div>
+                        <h3>福利待遇</h3>
+                        <p id="benefits">N/A</p>
+                    </div>
+                </div>
+                <div>
+                    <h3>职位描述</h3>
+                    <p id="jobDescription">N/A</p>
+                </div>
+            </div>
+            
+            
+    
+            <!-- 简历摘要卡片 -->
+            <div class="card">
+                <!-- 简历摘要卡片 -->
+                <div class="card-header">简历摘要</div>
+                <div class="#resumeSummary">
+                    <textarea  id="resumeSummary" name="resumeSummary" rows="20"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        function closeBanner() {
+            const banner = document.getElementById('announcement-banner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
+        }
+        </script>
+    <script src="options.js"></script>
+    <script src="lib/showdown.min.js"></script>
+    <script src="lib/xlsx.full.min.js"></script>
+
+
+</body>
+</html>

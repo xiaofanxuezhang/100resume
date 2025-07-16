@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "百分投简历",
+    "version": "0.2.7",
+    "description": "一键获取岗位描述，AI自动分析简历匹配度，让应聘更简单",
+    "permissions": ["storage", "tabs", "activeTab", "scripting","notifications"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": [
+        "https://www.zhipin.com/*",
+        "https://open.bigmodel.cn/*",
+        "https://resume-matching-api.aitoolhub.top/*",
+        "https://100resume.aitoolhub.top/*"
+
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": "icons/icon.png"
+    },
+    "web_accessible_resources": [
+    {
+      "resources": ["options.js", "Options.html","contentScript.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+    "icons": {
+        "48": "icons/icon.png"
+    }
+}

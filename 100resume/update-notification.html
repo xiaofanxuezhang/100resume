@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>更新通知</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  a { color: #337ab7; text-decoration: none; }
+</style>
+</head>
+<body>
+  <h1>更新可用</h1>
+  <p>有新的版本可用: <strong id="version"></strong>！</p>
+  <p>请<a id="download-link" href="#">点击这里</a>下载更新。</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const version = params.get('version');
+    const url = params.get('url');
+    document.getElementById('version').textContent = version;
+    document.getElementById('download-link').href = url;
+  </script>
+</body>
+</html>
